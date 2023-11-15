@@ -89,7 +89,8 @@ class NewsDetailViewController: UIViewController {
         }
         
         contentView.snp.makeConstraints { make in
-            make.size.edges.equalToSuperview()
+            make.width.edges.equalToSuperview()
+//            make.size.edges.equalToSuperview()
         }
         
         newsImageView.snp.makeConstraints { make in
@@ -103,7 +104,7 @@ class NewsDetailViewController: UIViewController {
         }
         
         descriptionLabel.snp.makeConstraints { make in
-            make.top.equalTo(newsTitleLabel.snp.bottom).offset(8)
+            make.top.equalTo(newsTitleLabel.snp.bottom).offset(20)
             make.leading.trailing.equalToSuperview().inset(6)
         }
         
