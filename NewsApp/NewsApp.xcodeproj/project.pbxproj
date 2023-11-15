@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD04B6F42B0504F200C36ED8 /* DetailsCollectionsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD04B6F32B0504F200C36ED8 /* DetailsCollectionsViewCell.swift */; };
 		DD5692202B01665F000A76DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD56921F2B01665F000A76DC /* AppDelegate.swift */; };
 		DD5692242B01665F000A76DC /* GeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5692232B01665F000A76DC /* GeneralViewController.swift */; };
 		DD5692292B016661000A76DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD5692282B016661000A76DC /* Assets.xcassets */; };
@@ -16,9 +17,12 @@
 		DD5692382B01701A000A76DC /* TechnologyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5692372B01701A000A76DC /* TechnologyViewController.swift */; };
 		DD56923B2B017EA6000A76DC /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = DD56923A2B017EA6000A76DC /* SnapKit */; };
 		DD5692412B0180B1000A76DC /* GeneralCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5692402B0180B1000A76DC /* GeneralCollectionViewCell.swift */; };
+		DDA1819F2B03B17200E84A9E /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA1819E2B03B17200E84A9E /* NewsDetailViewController.swift */; };
+		DDE706812B03D88500B360A5 /* UIViev+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE706802B03D88500B360A5 /* UIViev+Ex.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DD04B6F32B0504F200C36ED8 /* DetailsCollectionsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCollectionsViewCell.swift; sourceTree = "<group>"; };
 		DD56921C2B01665F000A76DC /* NewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD56921F2B01665F000A76DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD5692232B01665F000A76DC /* GeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralViewController.swift; sourceTree = "<group>"; };
@@ -29,6 +33,8 @@
 		DD5692352B016FFC000A76DC /* BusinessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessViewController.swift; sourceTree = "<group>"; };
 		DD5692372B01701A000A76DC /* TechnologyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechnologyViewController.swift; sourceTree = "<group>"; };
 		DD5692402B0180B1000A76DC /* GeneralCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralCollectionViewCell.swift; sourceTree = "<group>"; };
+		DDA1819E2B03B17200E84A9E /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
+		DDE706802B03D88500B360A5 /* UIViev+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViev+Ex.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +73,7 @@
 				DD56923C2B018071000A76DC /* General */,
 				DD56923D2B01807C000A76DC /* Business */,
 				DD56923E2B018085000A76DC /* Technology */,
+				DDE706822B03D88A00B360A5 /* Extensions */,
 				DD5692282B016661000A76DC /* Assets.xcassets */,
 				DD56922A2B016661000A76DC /* LaunchScreen.storyboard */,
 				DD56922D2B016661000A76DC /* Info.plist */,
@@ -86,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				DD5692352B016FFC000A76DC /* BusinessViewController.swift */,
+				DD04B6F32B0504F200C36ED8 /* DetailsCollectionsViewCell.swift */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -103,8 +111,17 @@
 			children = (
 				DD5692232B01665F000A76DC /* GeneralViewController.swift */,
 				DD5692402B0180B1000A76DC /* GeneralCollectionViewCell.swift */,
+				DDA1819E2B03B17200E84A9E /* NewsDetailViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		DDE706822B03D88A00B360A5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DDE706802B03D88500B360A5 /* UIViev+Ex.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,10 +202,13 @@
 			files = (
 				DD5692382B01701A000A76DC /* TechnologyViewController.swift in Sources */,
 				DD5692412B0180B1000A76DC /* GeneralCollectionViewCell.swift in Sources */,
+				DDE706812B03D88500B360A5 /* UIViev+Ex.swift in Sources */,
 				DD5692342B016EA0000A76DC /* TabBarController.swift in Sources */,
+				DDA1819F2B03B17200E84A9E /* NewsDetailViewController.swift in Sources */,
 				DD5692242B01665F000A76DC /* GeneralViewController.swift in Sources */,
 				DD5692362B016FFC000A76DC /* BusinessViewController.swift in Sources */,
 				DD5692202B01665F000A76DC /* AppDelegate.swift in Sources */,
+				DD04B6F42B0504F200C36ED8 /* DetailsCollectionsViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

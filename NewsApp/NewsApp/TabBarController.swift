@@ -38,4 +38,12 @@ final class TabBarController: UITabBarController {
         
         return navigationController
     }
+    
+    private func setupTapBar() {
+        let apperance = UITabBarAppearance()
+        apperance.configureWithOpaqueBackground()
+        tabBar.scrollEdgeAppearance = apperance
+        
+        view.tintColor = .black
+    }
 }

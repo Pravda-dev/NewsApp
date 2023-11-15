@@ -11,10 +11,10 @@ import SnapKit
 final class GeneralCollectionViewCell: UICollectionViewCell {
     //MARK: - GUI Variables
     
-    private lazy var imageView: UIImageView = {
+    private lazy var theFirstImageView: UIImageView = {
         let view = UIImageView()
         
-        view.image = UIImage(named: "Image") ?? UIImage.add
+        view.image = UIImage(named: "firstImage") ?? UIImage.add
         
         return view
     }()
@@ -51,15 +51,15 @@ final class GeneralCollectionViewCell: UICollectionViewCell {
     //MARK: - Private methods
     
     private func setupUI() {
-        addSubview(imageView)
+        addSubview(theFirstImageView)
         addSubview(blackView)
-        addSubview(titleLabel )
+        addSubview(titleLabel)
         
         setupConstraints()
     }
     
     private func setupConstraints() {
-        imageView.snp.makeConstraints { make in
+        theFirstImageView.snp.makeConstraints { make in
             make.size.edges.equalToSuperview()
         }
         
