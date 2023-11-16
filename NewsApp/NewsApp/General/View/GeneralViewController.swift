@@ -64,9 +64,13 @@ class GeneralViewController: UIViewController, UICollectionViewDelegate {
         viewModel.reloadData = { [weak self] in
             self?.collectionView.reloadData()
         }
+        
+        viewModel.showError = { error in
+            //TODO: Show alert with error
+            print(error)
+        }
     }
 
-    //MARK: - Private methods
     private func setupUI() {
         view.backgroundColor = .white
         view.addSubview(searchBar)
@@ -110,12 +114,9 @@ extension GeneralViewController: UICollectionViewDataSource {
 
 //MARK: - UICollectionViewDelegate
 extension GeneralViewController {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let news = NewsDetailViewController()
-        news.newsTitle = "Apple Seeds Third Beta of macOS Sonoma 14.2 to Developers"
-        news.newsDescription = "Apple today seeded the third beta of an upcoming macOS Sonoma 14.2 update to developers for testing purposes, with the software coming a week after Apple seeded the second beta of macOS Sonoma 14.2. Registered developers can opt-in to the beta through the Software Update section of the System Settings app. Under Beta updates, toggle on the Sonoma Developer Beta. Note that an Apple ID associated with an Apple Developer account is required to get the beta. macOS Sonoma‌ 14.2 adds an Apple Music Favorites playlist that houses everything you've favorited, plus Apple added support for collaborative playlists. You can now share a playlist with multiple people, and each participant can add songs. Shazam can also be added to the Control Center or menu bar on the Mac. Stickers can be used to reply to iMessages when you long press on a chat bubble in the Messages app, and there's also now support for the extra-secure iMessage Contact Key Verification option."
-        news.newsDate = "November 14, 2023"
-        
-        navigationController?.pushViewController(news, animated: true)
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath) {
+        navigationController?.pushViewController(NewsDetailViewController(), 
+                                                 animated: true)
     }
 }

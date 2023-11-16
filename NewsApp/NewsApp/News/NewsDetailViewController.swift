@@ -36,6 +36,7 @@ class NewsDetailViewController: UIViewController {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.largeTitle)
         label.numberOfLines = 0
+        label.text = "It will news at this place"
         
         return label
     }()
