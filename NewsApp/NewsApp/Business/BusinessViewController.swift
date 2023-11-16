@@ -96,12 +96,12 @@ extension BusinessViewController: UICollectionViewDataSource {
 //MARK: - UICollectionViewDelegate
 extension BusinessViewController {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let news = NewsDetailViewController()
-        news.newsTitle = "title"
-        news.newsDescription = "text"
-        news.newsDate = "date"
+//        let news = NewsDetailViewController()
+//        news.newsTitle = "title"
+//        news.newsDescription = "text"
+//        news.newsDate = "date"
         
-        navigationController?.pushViewController(news, animated: true)
+//        navigationController?.pushViewController(news, animated: true)
     }
 }
 

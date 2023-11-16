@@ -14,8 +14,6 @@ final class GeneralCollectionViewCell: UICollectionViewCell {
     private lazy var theFirstImageView: UIImageView = {
         let view = UIImageView()
         
-        view.image = UIImage(named: "firstImage") ?? UIImage.add
-        
         return view
     }()
     
@@ -51,6 +49,13 @@ final class GeneralCollectionViewCell: UICollectionViewCell {
     //MARK: - Methods
     func set(article: ArticleCellViewModel) {
         titleLabel.text = article.title
+        
+        if let data = article.imageData,
+            let image = UIImage(data: data) {
+            theFirstImageView.image = image
+        } else {
+            theFirstImageView.image = UIImage(named: "image")
+        }
     }
     
     //MARK: - Private methods
