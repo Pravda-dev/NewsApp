@@ -116,7 +116,7 @@ class NewsDetailViewController: UIViewController {
         }
         
         newsTitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(newsImageView.snp.bottom).offset(1)
+            make.top.equalTo(newsImageView.snp.bottom).offset(20)
             make.leading.trailing.equalToSuperview().inset(6)
         }
         

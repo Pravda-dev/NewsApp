@@ -1,13 +1,13 @@
 //
-//  GeneralViewModel.swift
+//  BusinessViewModel.swift
 //  NewsApp
 //
-//  Created by pravda on 15.11.2023.
+//  Created by pravda on 19.11.2023.
 //
 
 import UIKit
 
-protocol GeneralViewModelProtocol {
+protocol BusinessViewModelProtocol {
     var reloadData: (() -> Void)? { get set }
     var showError: ((String) -> Void)? { get set}
     var reloadCell: ((Int) -> Void)? { get set }
@@ -17,7 +17,7 @@ protocol GeneralViewModelProtocol {
     func getArticle(for row: Int) -> ArticleCellViewModel
 }
 
-final class GeneralViewModel: GeneralViewModelProtocol {
+final class BusinessViewModel: BusinessViewModelProtocol {
     var reloadData: (() -> Void)?
     var reloadCell: ((Int) -> Void)?
     var showError: ((String) -> Void)?
@@ -44,7 +44,7 @@ final class GeneralViewModel: GeneralViewModelProtocol {
     }
     
     private func loadData() {
-        ApiManager.getNews { [weak self] result in
+        ApiManager.getBusinessNews { [weak self] result in
             guard let self = self else { return }
             
             switch result {

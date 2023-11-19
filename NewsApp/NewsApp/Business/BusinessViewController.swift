@@ -36,8 +36,19 @@ class BusinessViewController: UIViewController, UICollectionViewDelegate {
     }()
     
     //MARK: - Properties
-    
+    private var viewModel: BusinessViewModelProtocol
+
     //MARK: - Life Cycle
+    init (viewModel: BusinessViewModelProtocol) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+        self.setupViewModel()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,8 +59,22 @@ class BusinessViewController: UIViewController, UICollectionViewDelegate {
     }
     
     //MARK: - Methods
+    private func setupViewModel() {
+        viewModel.reloadData = { [weak self] in
+            self?.collectionView.reloadData()
+        }
+        
+        viewModel.reloadCell = { [weak self] row in
+            self?.collectionView.reloadItems(at: [IndexPath(row: row, section: 0)])
+            
+        }
+        
+        viewModel.showError = { error in
+            //TODO: Show alert with error
+            print(error)
+        }
+    }
 
-    //MARK: - Private methods
     private func setupUI() {
         view.backgroundColor = .white
         view.addSubview(collectionView)
@@ -95,13 +120,11 @@ extension BusinessViewController: UICollectionViewDataSource {
 
 //MARK: - UICollectionViewDelegate
 extension BusinessViewController {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let news = NewsDetailViewController()
-//        news.newsTitle = "title"
-//        news.newsDescription = "text"
-//        news.newsDate = "date"
-        
-//        navigationController?.pushViewController(news, animated: true)
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath) {
+        let article = viewModel.getArticle(for: indexPath.row)
+        navigationController?.pushViewController(NewsDetailViewController(viewModel: NewsViewModel(article: article)),
+                                                 animated: true)
     }
 }
 

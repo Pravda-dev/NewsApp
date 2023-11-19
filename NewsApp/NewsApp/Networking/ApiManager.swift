@@ -27,6 +27,20 @@ final class ApiManager {
         session.resume()
     }
     
+    static func getBusinessNews(completion: @escaping (Result<[ArticleRensponseObject], Error>) -> ()) {
+        let stringUrl = baseUrl + path + "?category=business&language=en" + "&apiKey=\(apiKey)"
+        
+        guard let url = URL(string: stringUrl) else { return }
+        
+        let session = URLSession.shared.dataTask(with: url) { data, _, error in
+            handleResponse(data: data,
+                           error: error,
+                           completion: completion)
+        }
+        
+        session.resume()
+    }
+    
     static func getImageData(url: String, completion: @escaping (Result<Data, Error>) -> ()) {
         guard let url = URL(string: url) else { return }
         
