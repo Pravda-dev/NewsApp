@@ -5,7 +5,7 @@
 //  Created by pravda on 15.11.2023.
 //
 
-import UIKit
+import Foundation
 
 struct ArticleRensponseObject: Codable {
     let title: String
