@@ -5,7 +5,7 @@
 //  Created by pravda on 15.11.2023.
 //
 
-import Foundation
+import UIKit
 
 struct NewsResponseObject: Codable {
     let totalResults: Int
