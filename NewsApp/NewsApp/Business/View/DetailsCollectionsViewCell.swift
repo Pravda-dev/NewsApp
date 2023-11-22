@@ -13,9 +13,9 @@ final class DetailsCollectionsViewCell: UICollectionViewCell {
     private lazy var imageView: UIImageView = {
         let view = UIImageView()
         
-        view.image = UIImage(named: "businessImage")
-        view.contentMode = .scaleAspectFill
-        view.layer.masksToBounds = true
+//        view.image = UIImage(named: "businessImage")
+//        view.contentMode = .scaleAspectFill
+//        view.layer.masksToBounds = true
         
         return view
     }()
@@ -23,20 +23,17 @@ final class DetailsCollectionsViewCell: UICollectionViewCell {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         
-        label.font = .boldSystemFont(ofSize: 16)
-        label.textColor = .black
-        label.text = "Title here"
-        label.numberOfLines = 2
+        label.text = "Title"
+        label.textColor = .white
         
         return label
     }()
     
-    private lazy var descriptionLablel: UILabel = {
+    private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         
         label.font = .systemFont(ofSize: 14)
         label.textColor = .gray
-        label.text = "another text another text another text another text another text another text another text another text another text another text another text another text another text another text another text another text "
         label.numberOfLines = 2
         
         return label
@@ -52,10 +49,21 @@ final class DetailsCollectionsViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     //MARK: - Methods
+    func set(article: ArticleCellViewModel) {
+        titleLabel.text = article.title
+        
+        if let data = article.imageData,
+            let image = UIImage(data: data) {
+            imageView.image = image
+        } else {
+            imageView.image = UIImage(named: "image")
+        }
+    }
+    
     private func setupUI() {
         addSubview(imageView)
         addSubview(titleLabel)
-        addSubview(descriptionLablel)
+        addSubview(descriptionLabel)
         
         setupConstraints()
     }
@@ -71,7 +79,7 @@ final class DetailsCollectionsViewCell: UICollectionViewCell {
             make.leading.equalTo(imageView.snp.trailing).offset(5)
         }
         
-        descriptionLablel.snp.makeConstraints { make in
+        descriptionLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(5)
             make.leading.equalTo(imageView.snp.trailing).offset(5)
             make.trailing.equalToSuperview()

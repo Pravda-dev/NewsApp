@@ -8,15 +8,23 @@
 import UIKit
 
 final class ApiManager {
+    enum Category: String {
+        case general = "general"
+        case business = "business"
+        case technology = "technology"
+    }
+    
     private static let apiKey = "b5f227d594134f2da38106545d2e0455"
     private static let baseUrl = "https://newsapi.org/v2/"
-    private static let path = "everything"
+    private static let path = "top-headlines"
     
     //Create url path and make request
-    static func getNews(completion: @escaping (Result<[ArticleRensponseObject], Error>) -> ()) {
-        let stringUrl = baseUrl + path + "?sources=bbc-news&language=en" + "&apiKey=\(apiKey)"
+    static func getNews(from category: Category,
+                        completion: @escaping (Result<[ArticleRensponseObject], Error>) -> ()) {
+        let stringUrl = baseUrl + path + "?category=\(category.rawValue)&language=en" + "&apiKey=\(apiKey)"
         
         guard let url = URL(string: stringUrl) else { return }
+        print(stringUrl)
         
         let session = URLSession.shared.dataTask(with: url) { data, _, error in
             handleResponse(data: data,
@@ -50,6 +58,9 @@ final class ApiManager {
         if let error = error {
             completion(.failure(NetworkingError.networkingError(error)))
         } else if let data = data {
+            let json = try? JSONSerialization.jsonObject(with: data, options: [])
+            print(json ?? "")
+                  
             do {
                 let model = try JSONDecoder().decode(NewsResponseObject.self,
                                                      from: data)
@@ -61,7 +72,6 @@ final class ApiManager {
         } else {
             completion(.failure(NetworkingError.unknown))
         }
-        
     }
 }
 

@@ -9,7 +9,7 @@ import UIKit
 
 struct ArticleCellViewModel {
     let title: String
-    let description: String
+    let description: String?
     let date: String
     let imageUrl: String
     var imageData: Data?
@@ -17,8 +17,8 @@ struct ArticleCellViewModel {
     
     init(article: ArticleRensponseObject) {
         title = article.title
-        description = article.description
+        description = article.description 
         date = article.date
-        imageUrl = article.urlToImage
+        imageUrl = article.urlToImage ?? "No description available"
     }
 }
