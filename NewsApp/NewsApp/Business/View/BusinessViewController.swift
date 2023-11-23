@@ -72,7 +72,6 @@ class BusinessViewController: UIViewController, UICollectionViewDelegate {
         }
         
         viewModel.showError = { error in
-            //TODO: Show alert with error
             print(error)
         }
     }
@@ -88,7 +87,8 @@ class BusinessViewController: UIViewController, UICollectionViewDelegate {
     private func setupConstraints() {
         collectionView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(5)
-            make.top.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.top.bottom.equalToSuperview()
+//            make.top.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
 }

@@ -60,7 +60,8 @@ final class BusinessViewModel: BusinessViewModelProtocol {
     
     private func loadImage() {
         for (index, article) in articles.enumerated() {
-            ApiManager.getImageData(url: article.imageUrl) { [weak self] result in
+            guard let url = article.imageUrl else { return }
+            ApiManager.getImageData(url: url) { [weak self] result in
                 
                 DispatchQueue.main.async {
                     switch result {

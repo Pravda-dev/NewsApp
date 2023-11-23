@@ -61,7 +61,7 @@ final class GeneralViewModel: GeneralViewModelProtocol {
     
     private func loadImage() {
         for (index, article) in articles.enumerated() {
-            ApiManager.getImageData(url: article.imageUrl) { [weak self] result in
+            ApiManager.getImageData(url: article.imageUrl ?? "No description available") { [weak self] result in
                 
                 DispatchQueue.main.async {
                     switch result {

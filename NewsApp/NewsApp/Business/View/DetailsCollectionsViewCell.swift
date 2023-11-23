@@ -14,8 +14,8 @@ final class DetailsCollectionsViewCell: UICollectionViewCell {
         let view = UIImageView()
         
 //        view.image = UIImage(named: "businessImage")
-//        view.contentMode = .scaleAspectFill
-//        view.layer.masksToBounds = true
+        view.contentMode = .scaleAspectFill
+        view.layer.masksToBounds = true
         
         return view
     }()
@@ -51,6 +51,8 @@ final class DetailsCollectionsViewCell: UICollectionViewCell {
     //MARK: - Methods
     func set(article: ArticleCellViewModel) {
         titleLabel.text = article.title
+        descriptionLabel.text = article.description
+
         
         if let data = article.imageData,
             let image = UIImage(data: data) {

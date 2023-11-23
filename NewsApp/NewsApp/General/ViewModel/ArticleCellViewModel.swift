@@ -11,7 +11,7 @@ struct ArticleCellViewModel {
     let title: String
     let description: String?
     let date: String
-    let imageUrl: String
+    let imageUrl: String?
     var imageData: Data?
     
     

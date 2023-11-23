@@ -13,7 +13,7 @@ final class GeneralCollectionViewCell: UICollectionViewCell {
     
     private lazy var imageView: UIImageView = {
         let view = UIImageView()
-        
+
         return view
     }()
     
@@ -28,7 +28,7 @@ final class GeneralCollectionViewCell: UICollectionViewCell {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Title"
+//        label.text = "Title"
         label.textColor = .white
         
         return label
@@ -65,12 +65,15 @@ final class GeneralCollectionViewCell: UICollectionViewCell {
         addSubview(blackView)
         addSubview(titleLabel)
         
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        
         setupConstraints()
     }
     
     private func setupConstraints() {
         imageView.snp.makeConstraints { make in
-            make.size.edges.equalToSuperview()
+            make/*.size*/.edges.equalToSuperview()
         }
         
         blackView.snp.makeConstraints { make in

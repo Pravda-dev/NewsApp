@@ -33,7 +33,7 @@ class NewsDetailViewController: UIViewController {
     
     private lazy var newsTitleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.largeTitle)
+        label.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.title1)
         label.numberOfLines = 0
         
         return label
