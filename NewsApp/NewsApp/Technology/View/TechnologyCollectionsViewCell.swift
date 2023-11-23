@@ -1,14 +1,14 @@
 //
-//  DetailsCollectionsViewCell.swift
+//  TechnologyCollectionsViewCell.swift
 //  NewsApp
 //
-//  Created by pravda on 15.11.2023.
+//  Created by pravda on 23.11.2023.
 //
 
 import UIKit
 import SnapKit
 
-final class DetailsCollectionsViewCell: UICollectionViewCell {
+final class TechnologyCollectionViewCell: UICollectionViewCell {
     //MARK: - GUI Variables
     private lazy var imageView: UIImageView = {
         let view = UIImageView()

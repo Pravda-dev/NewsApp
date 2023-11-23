@@ -27,6 +27,8 @@
 		DD56923B2B017EA6000A76DC /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = DD56923A2B017EA6000A76DC /* SnapKit */; };
 		DD5692412B0180B1000A76DC /* GeneralCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5692402B0180B1000A76DC /* GeneralCollectionViewCell.swift */; };
 		DDE706812B03D88500B360A5 /* UIViev+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE706802B03D88500B360A5 /* UIViev+Ex.swift */; };
+		DDEA7B752B10088E00D2E47C /* TechnologyCollectionsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEA7B742B10088E00D2E47C /* TechnologyCollectionsViewCell.swift */; };
+		DDEA7B772B1008BA00D2E47C /* TechnologyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEA7B762B1008BA00D2E47C /* TechnologyViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +53,8 @@
 		DD5692372B01701A000A76DC /* TechnologyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechnologyViewController.swift; sourceTree = "<group>"; };
 		DD5692402B0180B1000A76DC /* GeneralCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralCollectionViewCell.swift; sourceTree = "<group>"; };
 		DDE706802B03D88500B360A5 /* UIViev+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViev+Ex.swift"; sourceTree = "<group>"; };
+		DDEA7B742B10088E00D2E47C /* TechnologyCollectionsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechnologyCollectionsViewCell.swift; sourceTree = "<group>"; };
+		DDEA7B762B1008BA00D2E47C /* TechnologyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechnologyViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,7 +178,8 @@
 		DD56923E2B018085000A76DC /* Technology */ = {
 			isa = PBXGroup;
 			children = (
-				DD5692372B01701A000A76DC /* TechnologyViewController.swift */,
+				DDEA7B732B1007FD00D2E47C /* View */,
+				DDEA7B782B1008C600D2E47C /* ViewModel */,
 			);
 			path = Technology;
 			sourceTree = "<group>";
@@ -194,6 +199,23 @@
 				DDE706802B03D88500B360A5 /* UIViev+Ex.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		DDEA7B732B1007FD00D2E47C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DD5692372B01701A000A76DC /* TechnologyViewController.swift */,
+				DDEA7B742B10088E00D2E47C /* TechnologyCollectionsViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DDEA7B782B1008C600D2E47C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DDEA7B762B1008BA00D2E47C /* TechnologyViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,6 +298,7 @@
 				DD5692412B0180B1000A76DC /* GeneralCollectionViewCell.swift in Sources */,
 				DDE706812B03D88500B360A5 /* UIViev+Ex.swift in Sources */,
 				DD04B71B2B0A60FC00C36ED8 /* BusinessViewModel.swift in Sources */,
+				DDEA7B752B10088E00D2E47C /* TechnologyCollectionsViewCell.swift in Sources */,
 				DD04B6FB2B05236C00C36ED8 /* ArticleRensponseObject.swift in Sources */,
 				DD04B7092B054C6B00C36ED8 /* NetworkingError.swift in Sources */,
 				DD5692342B016EA0000A76DC /* TabBarController.swift in Sources */,
@@ -283,6 +306,7 @@
 				DD04B70B2B06A22D00C36ED8 /* NewsViewModel.swift in Sources */,
 				DD5692242B01665F000A76DC /* GeneralViewController.swift in Sources */,
 				DD5692362B016FFC000A76DC /* BusinessViewController.swift in Sources */,
+				DDEA7B772B1008BA00D2E47C /* TechnologyViewModel.swift in Sources */,
 				DD04B6F62B05205000C36ED8 /* GeneralViewModel.swift in Sources */,
 				DD04B7032B0532BF00C36ED8 /* NewsDetailViewController.swift in Sources */,
 				DD04B7052B0536F500C36ED8 /* ApiManager.swift in Sources */,
