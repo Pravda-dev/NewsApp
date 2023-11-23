@@ -16,7 +16,11 @@
 		DD04B7052B0536F500C36ED8 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD04B7042B0536F500C36ED8 /* ApiManager.swift */; };
 		DD04B7092B054C6B00C36ED8 /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD04B7082B054C6B00C36ED8 /* NetworkingError.swift */; };
 		DD04B70B2B06A22D00C36ED8 /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD04B70A2B06A22D00C36ED8 /* NewsViewModel.swift */; };
+<<<<<<< HEAD
 		DD04B71B2B0A60FC00C36ED8 /* BusinessViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD04B71A2B0A60FC00C36ED8 /* BusinessViewModel.swift */; };
+=======
+		DD04B7172B0A4A0C00C36ED8 /* BusinessViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD04B7162B0A4A0C00C36ED8 /* BusinessViewModel.swift */; };
+>>>>>>> BusinessViewModel
 		DD5692202B01665F000A76DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD56921F2B01665F000A76DC /* AppDelegate.swift */; };
 		DD5692242B01665F000A76DC /* GeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5692232B01665F000A76DC /* GeneralViewController.swift */; };
 		DD5692292B016661000A76DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD5692282B016661000A76DC /* Assets.xcassets */; };
@@ -39,7 +43,11 @@
 		DD04B7042B0536F500C36ED8 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		DD04B7082B054C6B00C36ED8 /* NetworkingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingError.swift; sourceTree = "<group>"; };
 		DD04B70A2B06A22D00C36ED8 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		DD04B71A2B0A60FC00C36ED8 /* BusinessViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessViewModel.swift; sourceTree = "<group>"; };
+=======
+		DD04B7162B0A4A0C00C36ED8 /* BusinessViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessViewModel.swift; sourceTree = "<group>"; };
+>>>>>>> BusinessViewModel
 		DD56921C2B01665F000A76DC /* NewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD56921F2B01665F000A76DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD5692232B01665F000A76DC /* GeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +109,7 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD
 		DD04B7192B0A60E800C36ED8 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +123,12 @@
 			isa = PBXGroup;
 			children = (
 				DD04B71A2B0A60FC00C36ED8 /* BusinessViewModel.swift */,
+=======
+		DD04B7182B0A4A2500C36ED8 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DD04B7162B0A4A0C00C36ED8 /* BusinessViewModel.swift */,
+>>>>>>> BusinessViewModel
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -143,8 +158,8 @@
 				DD56923C2B018071000A76DC /* General */,
 				DD56923D2B01807C000A76DC /* Business */,
 				DD56923E2B018085000A76DC /* Technology */,
-				DDE706822B03D88A00B360A5 /* Extensions */,
 				DD04B6FF2B0530E900C36ED8 /* News */,
+				DDE706822B03D88A00B360A5 /* Extensions */,
 				DD5692282B016661000A76DC /* Assets.xcassets */,
 				DD56922A2B016661000A76DC /* LaunchScreen.storyboard */,
 				DD56922D2B016661000A76DC /* Info.plist */,
@@ -165,8 +180,14 @@
 		DD56923D2B01807C000A76DC /* Business */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				DD04B7192B0A60E800C36ED8 /* View */,
 				DD04B71C2B0A610200C36ED8 /* ViewModel */,
+=======
+				DD5692352B016FFC000A76DC /* BusinessViewController.swift */,
+				DD04B6F32B0504F200C36ED8 /* DetailsCollectionsViewCell.swift */,
+				DD04B7182B0A4A2500C36ED8 /* ViewModel */,
+>>>>>>> BusinessViewModel
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -284,6 +305,7 @@
 				DD5692242B01665F000A76DC /* GeneralViewController.swift in Sources */,
 				DD5692362B016FFC000A76DC /* BusinessViewController.swift in Sources */,
 				DD04B6F62B05205000C36ED8 /* GeneralViewModel.swift in Sources */,
+				DD04B7172B0A4A0C00C36ED8 /* BusinessViewModel.swift in Sources */,
 				DD04B7032B0532BF00C36ED8 /* NewsDetailViewController.swift in Sources */,
 				DD04B7052B0536F500C36ED8 /* ApiManager.swift in Sources */,
 				DD5692202B01665F000A76DC /* AppDelegate.swift in Sources */,

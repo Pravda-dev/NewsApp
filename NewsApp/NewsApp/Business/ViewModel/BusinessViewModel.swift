@@ -14,7 +14,10 @@ protocol BusinessViewModelProtocol {
     
     var numberOfCells: Int { get }
     
+<<<<<<< HEAD
     func loadData()
+=======
+>>>>>>> BusinessViewModel
     func getArticle(for row: Int) -> ArticleCellViewModel
 }
 
@@ -36,14 +39,26 @@ final class BusinessViewModel: BusinessViewModelProtocol {
         }
     }
     
+<<<<<<< HEAD
+=======
+    init() {
+        loadData()
+    }
+    
+>>>>>>> BusinessViewModel
     func getArticle(for row: Int) -> ArticleCellViewModel {
         return articles[row]
     }
     
+<<<<<<< HEAD
     func loadData() {
         print(#function)
         
         ApiManager.getNews(from: .business) { [weak self] result in
+=======
+    private func loadData() {
+        ApiManager.getBusinessNews { [weak self] result in
+>>>>>>> BusinessViewModel
             guard let self = self else { return }
             
             switch result {
@@ -60,8 +75,12 @@ final class BusinessViewModel: BusinessViewModelProtocol {
     
     private func loadImage() {
         for (index, article) in articles.enumerated() {
+<<<<<<< HEAD
             guard let url = article.imageUrl else { return }
             ApiManager.getImageData(url: url) { [weak self] result in
+=======
+            ApiManager.getImageData(url: article.imageUrl) { [weak self] result in
+>>>>>>> BusinessViewModel
                 
                 DispatchQueue.main.async {
                     switch result {
