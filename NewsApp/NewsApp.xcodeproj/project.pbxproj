@@ -29,6 +29,7 @@
 		DDE706812B03D88500B360A5 /* UIViev+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE706802B03D88500B360A5 /* UIViev+Ex.swift */; };
 		DDEA7B752B10088E00D2E47C /* TechnologyCollectionsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEA7B742B10088E00D2E47C /* TechnologyCollectionsViewCell.swift */; };
 		DDEA7B772B1008BA00D2E47C /* TechnologyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEA7B762B1008BA00D2E47C /* TechnologyViewModel.swift */; };
+		DDEA7B7A2B10FEB700D2E47C /* TableCollectionViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEA7B792B10FEB700D2E47C /* TableCollectionViewSection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		DDE706802B03D88500B360A5 /* UIViev+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViev+Ex.swift"; sourceTree = "<group>"; };
 		DDEA7B742B10088E00D2E47C /* TechnologyCollectionsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechnologyCollectionsViewCell.swift; sourceTree = "<group>"; };
 		DDEA7B762B1008BA00D2E47C /* TechnologyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechnologyViewModel.swift; sourceTree = "<group>"; };
+		DDEA7B792B10FEB700D2E47C /* TableCollectionViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCollectionViewSection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 			children = (
 				DD04B6F82B0522DF00C36ED8 /* NewsResponseObject.swift */,
 				DD04B6FA2B05236C00C36ED8 /* ArticleRensponseObject.swift */,
+				DDEA7B792B10FEB700D2E47C /* TableCollectionViewSection.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 			files = (
 				DD5692382B01701A000A76DC /* TechnologyViewController.swift in Sources */,
 				DD5692412B0180B1000A76DC /* GeneralCollectionViewCell.swift in Sources */,
+				DDEA7B7A2B10FEB700D2E47C /* TableCollectionViewSection.swift in Sources */,
 				DDE706812B03D88500B360A5 /* UIViev+Ex.swift in Sources */,
 				DD04B71B2B0A60FC00C36ED8 /* BusinessViewModel.swift in Sources */,
 				DDEA7B752B10088E00D2E47C /* TechnologyCollectionsViewCell.swift in Sources */,

@@ -7,7 +7,8 @@
 
 import UIKit
 
-struct ArticleCellViewModel {
+final
+class ArticleCellViewModel: tableCollectionsViewItemsProtocol {
     let title: String
     let description: String?
     let date: String

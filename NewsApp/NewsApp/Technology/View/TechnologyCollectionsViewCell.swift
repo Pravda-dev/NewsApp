@@ -19,7 +19,7 @@ final class TechnologyCollectionViewCell: UICollectionViewCell {
         
         return view
     }()
-    
+        
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         
