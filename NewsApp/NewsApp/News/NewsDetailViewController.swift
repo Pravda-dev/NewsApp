@@ -24,7 +24,6 @@ class NewsDetailViewController: UIViewController {
     private lazy var newsImageView: UIImageView = {
         let view = UIImageView()
         
-        view.image = UIImage(named: "newsDetailImage") ?? UIImage.add
         view.backgroundColor = .white
         view.contentMode = .scaleAspectFit
         view.clipsToBounds = true
@@ -34,7 +33,7 @@ class NewsDetailViewController: UIViewController {
     
     private lazy var newsTitleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.largeTitle)
+        label.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.title1)
         label.numberOfLines = 0
         
         return label
@@ -57,11 +56,18 @@ class NewsDetailViewController: UIViewController {
     }()
     
     //MARK: - Properties
-    var newsTitle: String?
-    var newsDescription: String?
-    var newsDate: String?
+    private let viewModel: NewsViewModelProtocol
     
     //MARK: - Life cycles
+    init (viewModel: NewsViewModelProtocol) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -79,7 +85,17 @@ class NewsDetailViewController: UIViewController {
                                descriptionLabel,
                                dateLabel])
         
-        populateData()
+        newsTitleLabel.text = viewModel.title
+        descriptionLabel.text = viewModel.description
+        dateLabel.text = viewModel.date
+        
+        if let data = viewModel.imageData,
+            let image = UIImage(data: data) {
+            newsImageView.image = image
+        } else {
+            newsImageView.image = UIImage(named: "image")
+        }
+        
         setupConstraints()
     }
     
@@ -89,21 +105,23 @@ class NewsDetailViewController: UIViewController {
         }
         
         contentView.snp.makeConstraints { make in
-            make.size.edges.equalToSuperview()
+            make.width.edges.equalToSuperview()
+//            make.size.edges.equalToSuperview()
         }
         
         newsImageView.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview().inset(4)
+//            make.height.equalTo(view.snp.width)
             make.height.equalTo(view.snp.height).multipliedBy(0.25)
         }
         
         newsTitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(newsImageView.snp.bottom).offset(1)
+            make.top.equalTo(newsImageView.snp.bottom).offset(20)
             make.leading.trailing.equalToSuperview().inset(6)
         }
         
         descriptionLabel.snp.makeConstraints { make in
-            make.top.equalTo(newsTitleLabel.snp.bottom).offset(8)
+            make.top.equalTo(newsTitleLabel.snp.bottom).offset(20)
             make.leading.trailing.equalToSuperview().inset(6)
         }
         
@@ -111,12 +129,6 @@ class NewsDetailViewController: UIViewController {
             make.top.equalTo(descriptionLabel.snp.bottom).offset(5)
             make.leading.trailing.bottom.equalToSuperview().inset(6)
         }
-    }
-    
-    private func populateData() {
-        newsTitleLabel.text = newsTitle
-        descriptionLabel.text = newsDescription
-        dateLabel.text = newsDate
     }
 }
 //MARK: - UITextFieldDelegate

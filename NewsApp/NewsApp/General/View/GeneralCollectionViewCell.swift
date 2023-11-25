@@ -11,11 +11,9 @@ import SnapKit
 final class GeneralCollectionViewCell: UICollectionViewCell {
     //MARK: - GUI Variables
     
-    private lazy var theFirstImageView: UIImageView = {
+    private lazy var imageView: UIImageView = {
         let view = UIImageView()
-        
-        view.image = UIImage(named: "firstImage") ?? UIImage.add
-        
+
         return view
     }()
     
@@ -30,7 +28,7 @@ final class GeneralCollectionViewCell: UICollectionViewCell {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Title"
+//        label.text = "Title"
         label.textColor = .white
         
         return label
@@ -48,19 +46,34 @@ final class GeneralCollectionViewCell: UICollectionViewCell {
         
     }
     
+    //MARK: - Methods
+    func set(article: ArticleCellViewModel) {
+        titleLabel.text = article.title
+        
+        if let data = article.imageData,
+            let image = UIImage(data: data) {
+            imageView.image = image
+        } else {
+            imageView.image = UIImage(named: "image")
+        }
+    }
+    
     //MARK: - Private methods
     
     private func setupUI() {
-        addSubview(theFirstImageView)
+        addSubview(imageView)
         addSubview(blackView)
         addSubview(titleLabel)
+        
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         
         setupConstraints()
     }
     
     private func setupConstraints() {
-        theFirstImageView.snp.makeConstraints { make in
-            make.size.edges.equalToSuperview()
+        imageView.snp.makeConstraints { make in
+            make/*.size*/.edges.equalToSuperview()
         }
         
         blackView.snp.makeConstraints { make in

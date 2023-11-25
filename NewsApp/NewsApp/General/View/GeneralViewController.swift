@@ -8,12 +8,14 @@
 import UIKit
 import SnapKit
 
-class GeneralViewController: UIViewController, UICollectionViewDelegate {
+final class GeneralViewController: UIViewController, UICollectionViewDelegate {
 
     
     //MARK: - GUI Variables
     private lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
+        
+        searchBar.delegate = self
         
         return searchBar
     }()
@@ -37,23 +39,49 @@ class GeneralViewController: UIViewController, UICollectionViewDelegate {
     }()
     
     //MARK: - Properties
+    private var viewModel: NewsListViewModelProtocol
     
     //MARK: - Life Cycle
+    init (viewModel: NewsListViewModelProtocol) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+        self.setupViewModel()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
+        collectionView.register(GeneralCollectionViewCell.self, forCellWithReuseIdentifier: "GeneralCollectionViewCell")
+        
+        viewModel.loadData(searchText: nil)
     }
     
     //MARK: - Methods
+    private func setupViewModel() {
+        viewModel.reloadData = { [weak self] in
+            self?.collectionView.reloadData()
+        }
+        
+        viewModel.reloadCell = { [weak self] IndexPath in
+            self?.collectionView.reloadItems(at: [IndexPath])
+            
+        }
+        
+        viewModel.showError = { error in
+            print(error)
+        }
+    }
 
-    //MARK: - Private methods
     private func setupUI() {
         view.backgroundColor = .white
         view.addSubview(searchBar)
         view.addSubview(collectionView)
         
-        collectionView.register(GeneralCollectionViewCell.self, forCellWithReuseIdentifier: "GeneralCollectionViewCell")
         setupConstraints()
     }
     
@@ -72,15 +100,20 @@ class GeneralViewController: UIViewController, UICollectionViewDelegate {
 
 //MARK: - UICollectionViewDataSource
 extension GeneralViewController: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        viewModel.sections.count
+    }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        1
+        viewModel.sections[section].items.count
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GeneralCollectionViewCell",
-                                                            for: indexPath) as? GeneralCollectionViewCell
-        else { return UICollectionViewCell() }
+        guard let article = viewModel.sections[indexPath.section].items[indexPath.row] as? ArticleCellViewModel,
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GeneralCollectionViewCell",
+                                                            for: indexPath) as? GeneralCollectionViewCell else { return UICollectionViewCell() }
+        
+        cell.set(article: article)
         
         return cell
     }
@@ -90,12 +123,35 @@ extension GeneralViewController: UICollectionViewDataSource {
 
 //MARK: - UICollectionViewDelegate
 extension GeneralViewController {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let news = NewsDetailViewController()
-        news.newsTitle = "Apple Seeds Third Beta of macOS Sonoma 14.2 to Developers"
-        news.newsDescription = "Apple today seeded the third beta of an upcoming macOS Sonoma 14.2 update to developers for testing purposes, with the software coming a week after Apple seeded the second beta of macOS Sonoma 14.2. Registered developers can opt-in to the beta through the Software Update section of the System Settings app. Under Beta updates, toggle on the Sonoma Developer Beta. Note that an Apple ID associated with an Apple Developer account is required to get the beta. macOS Sonoma‌ 14.2 adds an Apple Music Favorites playlist that houses everything you've favorited, plus Apple added support for collaborative playlists. You can now share a playlist with multiple people, and each participant can add songs. Shazam can also be added to the Control Center or menu bar on the Mac. Stickers can be used to reply to iMessages when you long press on a chat bubble in the Messages app, and there's also now support for the extra-secure iMessage Contact Key Verification option."
-        news.newsDate = "November 14, 2023"
-        
-        navigationController?.pushViewController(news, animated: true)
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath) {
+        guard let article = viewModel.sections[indexPath.section].items[indexPath.row] as? ArticleCellViewModel else { return }
+        navigationController?.pushViewController(NewsDetailViewController(viewModel: NewsViewModel(article: article)), animated: true)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        willDisplay cell: UICollectionViewCell,
+                        forItemAt indexPath: IndexPath) {
+        if indexPath.row == (viewModel.sections[indexPath.section].items.count - 12) {
+            viewModel.loadData(searchText: searchBar.text)
+            
+        }
     }
 }
+
+//MARK: - UISearchBarDelegate
+extension GeneralViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let text = searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
+        
+        viewModel.loadData(searchText: text)
+        searchBar.searchTextField.resignFirstResponder()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            viewModel.loadData(searchText: nil)
+        }
+    }
+}
+
