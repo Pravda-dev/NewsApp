@@ -8,13 +8,12 @@
 import UIKit
 
 final class TabBarController: UITabBarController {
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.tintColor = .black
         setupViewControllers()
-        
     }
     
     private func setupViewControllers() {
@@ -39,11 +38,16 @@ final class TabBarController: UITabBarController {
         return navigationController
     }
     
-    private func setupTapBar() {
-        let apperance = UITabBarAppearance()
-        apperance.configureWithOpaqueBackground()
-        tabBar.scrollEdgeAppearance = apperance
-        
-        view.tintColor = .black
-    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+            view.endEditing(true)
+        }
+    
+    
+//    private func setupTapBar() {
+//        let apperance = UITabBarAppearance()
+//        apperance.configureWithOpaqueBackground()
+//        tabBar.scrollEdgeAppearance = apperance
+//        
+//        view.tintColor = .black
+//    }
 }

@@ -22,7 +22,7 @@ class TechnologyViewController: UIViewController, UICollectionViewDelegate {
                                            bottom: 20,
                                            right: 20)
         
-        layout.itemSize = CGSize(width: (view.frame.width - 40) / 2, height: 200) 
+//        layout.itemSize = CGSize(width: (view.frame.width - 40) / 2, height: 200) 
 
         
         
@@ -36,10 +36,10 @@ class TechnologyViewController: UIViewController, UICollectionViewDelegate {
     }()
     
     //MARK: - Properties
-    private var viewModel: TechnologyViewModelProtocol
+    private var viewModel: NewsListViewModelProtocol
     
     //MARK: - Life Cycle
-    init (viewModel: TechnologyViewModelProtocol) {
+    init (viewModel: NewsListViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         self.setupViewModel()
@@ -57,9 +57,9 @@ class TechnologyViewController: UIViewController, UICollectionViewDelegate {
         
         collectionView.register(DetailsCollectionsViewCell.self, forCellWithReuseIdentifier: "DetailsCollectionsViewCell")
         
-        collectionView.register(DetailsCollectionsViewCell.self, forCellWithReuseIdentifier: "DetailsCollectionsViewCell")
+        collectionView.register(TechnologyCollectionViewCell.self, forCellWithReuseIdentifier: "TechnologyCollectionViewCell")
         
-        viewModel.loadData()
+        viewModel.loadData(searchText: nil)
     }
     
     //MARK: - Methods
@@ -68,8 +68,8 @@ class TechnologyViewController: UIViewController, UICollectionViewDelegate {
             self?.collectionView.reloadData()
         }
         
-        viewModel.reloadCell = { [weak self] row in
-            self?.collectionView.reloadItems(at: [IndexPath(row: row, section: 0)])
+        viewModel.reloadCell = { [weak self] IndexPath in
+            self?.collectionView.reloadItems(at: [IndexPath])
             
         }
         
@@ -98,44 +98,48 @@ class TechnologyViewController: UIViewController, UICollectionViewDelegate {
 //MARK: - UICollectionViewDataSource
 extension TechnologyViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        viewModel.numberOfCells > 1 ? 2 : 1
+        viewModel.sections.count
     }
     
     func collectionView(_ collectionView: UICollectionView,
                          numberOfItemsInSection section: Int) -> Int {
-        if viewModel.numberOfCells > 1 {
-            return section == 0 ? 1 : viewModel.numberOfCells - 1
-        }
-        
-        return viewModel.numberOfCells
+        viewModel.sections[section].items.count
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let article = viewModel.sections[indexPath.section].items[indexPath.row] as? ArticleCellViewModel else { return UICollectionViewCell() }
+        
         if indexPath.section == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GeneralCollectionViewCell",
                                                                 for: indexPath) as? GeneralCollectionViewCell
-            let article = viewModel.getArticle(for: 0)
             cell?.set(article: article)
             
             return cell ?? UICollectionViewCell()
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DetailsCollectionsViewCell",
                                                           for: indexPath) as? DetailsCollectionsViewCell
-            let article = viewModel.getArticle(for: indexPath.row + 1)
             cell?.set(article: article)
             
             return cell ?? UICollectionViewCell()
             
         }
-    }
-}
+    }}
 
 //MARK: - UICollectionViewDelegate
 extension TechnologyViewController {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let article = viewModel.getArticle(for: indexPath.section == 0 ? 0 : indexPath.row + 1)
+        guard let article = viewModel.sections[indexPath.section].items[indexPath.row] as? ArticleCellViewModel else { return }
         navigationController?.pushViewController(NewsDetailViewController(viewModel: NewsViewModel(article: article)), animated: true)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        willDisplay cell: UICollectionViewCell,
+                        forItemAt indexPath: IndexPath) {
+        if indexPath.row == (viewModel.sections[1].items.count - 12) {
+            viewModel.loadData(searchText: nil)
+            
+        }
     }
 }
 

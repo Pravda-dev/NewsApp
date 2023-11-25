@@ -30,6 +30,7 @@
 		DDEA7B752B10088E00D2E47C /* TechnologyCollectionsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEA7B742B10088E00D2E47C /* TechnologyCollectionsViewCell.swift */; };
 		DDEA7B772B1008BA00D2E47C /* TechnologyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEA7B762B1008BA00D2E47C /* TechnologyViewModel.swift */; };
 		DDEA7B7A2B10FEB700D2E47C /* TableCollectionViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEA7B792B10FEB700D2E47C /* TableCollectionViewSection.swift */; };
+		DDEA7B7C2B111C7D00D2E47C /* NewsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEA7B7B2B111C7D00D2E47C /* NewsListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 		DDEA7B742B10088E00D2E47C /* TechnologyCollectionsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechnologyCollectionsViewCell.swift; sourceTree = "<group>"; };
 		DDEA7B762B1008BA00D2E47C /* TechnologyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechnologyViewModel.swift; sourceTree = "<group>"; };
 		DDEA7B792B10FEB700D2E47C /* TableCollectionViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCollectionViewSection.swift; sourceTree = "<group>"; };
+		DDEA7B7B2B111C7D00D2E47C /* NewsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 			children = (
 				DD56921F2B01665F000A76DC /* AppDelegate.swift */,
 				DD5692332B016EA0000A76DC /* TabBarController.swift */,
+				DDEA7B7B2B111C7D00D2E47C /* NewsListViewModel.swift */,
 				DD04B7072B05379100C36ED8 /* Networking */,
 				DD56923C2B018071000A76DC /* General */,
 				DD56923D2B01807C000A76DC /* Business */,
@@ -314,6 +317,7 @@
 				DD04B6F62B05205000C36ED8 /* GeneralViewModel.swift in Sources */,
 				DD04B7032B0532BF00C36ED8 /* NewsDetailViewController.swift in Sources */,
 				DD04B7052B0536F500C36ED8 /* ApiManager.swift in Sources */,
+				DDEA7B7C2B111C7D00D2E47C /* NewsListViewModel.swift in Sources */,
 				DD5692202B01665F000A76DC /* AppDelegate.swift in Sources */,
 				DD04B6F92B0522DF00C36ED8 /* NewsResponseObject.swift in Sources */,
 				DD04B6F42B0504F200C36ED8 /* DetailsCollectionsViewCell.swift in Sources */,

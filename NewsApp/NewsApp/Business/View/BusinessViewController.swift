@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class BusinessViewController: UIViewController, UICollectionViewDelegate {
+final class BusinessViewController: UIViewController, UICollectionViewDelegate {
 
     
     //MARK: - GUI Variables
@@ -36,10 +36,10 @@ class BusinessViewController: UIViewController, UICollectionViewDelegate {
     }()
     
     //MARK: - Properties
-    private var viewModel: BusinessViewModelProtocol
+    private var viewModel: NewsListViewModelProtocol
     
     //MARK: - Life Cycle
-    init (viewModel: BusinessViewModelProtocol) {
+    init (viewModel: NewsListViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         self.setupViewModel()
@@ -57,7 +57,7 @@ class BusinessViewController: UIViewController, UICollectionViewDelegate {
         
         collectionView.register(DetailsCollectionsViewCell.self, forCellWithReuseIdentifier: "DetailsCollectionsViewCell")
         
-        viewModel.loadData()
+        viewModel.loadData(searchText: nil)
     }
     
     //MARK: - Methods
@@ -96,17 +96,17 @@ class BusinessViewController: UIViewController, UICollectionViewDelegate {
 //MARK: - UICollectionViewDataSource
 extension BusinessViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        viewModel.articles.count
+        viewModel.sections.count
     }
     
     func collectionView(_ collectionView: UICollectionView, 
                          numberOfItemsInSection section: Int) -> Int {
-        viewModel.articles[section].items.count
+        viewModel.sections[section].items.count
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let article = viewModel.articles[indexPath.section].items[indexPath.row] as? ArticleCellViewModel else { return UICollectionViewCell() }
+        guard let article = viewModel.sections[indexPath.section].items[indexPath.row] as? ArticleCellViewModel else { return UICollectionViewCell() }
         
         if indexPath.section == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GeneralCollectionViewCell",
@@ -128,8 +128,17 @@ extension BusinessViewController: UICollectionViewDataSource {
 //MARK: - UICollectionViewDelegate
 extension BusinessViewController {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let article = viewModel.articles[indexPath.section].items[indexPath.row] as? ArticleCellViewModel else { return }
+        guard let article = viewModel.sections[indexPath.section].items[indexPath.row] as? ArticleCellViewModel else { return }
         navigationController?.pushViewController(NewsDetailViewController(viewModel: NewsViewModel(article: article)), animated: true)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        willDisplay cell: UICollectionViewCell,
+                        forItemAt indexPath: IndexPath) {
+        if indexPath.row == (viewModel.sections[1].items.count - 12) {
+            viewModel.loadData(searchText: nil)
+            
+        }
     }
 }
 
