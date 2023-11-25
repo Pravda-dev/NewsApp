@@ -81,6 +81,7 @@ final class DetailsCollectionsViewCell: UICollectionViewCell {
             make.leading.equalTo(imageView.snp.trailing).offset(5)
         }
         
+<<<<<<< HEAD:NewsApp/NewsApp/Business/View/DetailsCollectionsViewCell.swift
         descriptionLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(5)
             make.leading.equalTo(imageView.snp.trailing).offset(5)

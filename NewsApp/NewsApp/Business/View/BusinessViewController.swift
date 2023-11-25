@@ -36,8 +36,16 @@ final class BusinessViewController: UIViewController, UICollectionViewDelegate {
     }()
     
     //MARK: - Properties
+<<<<<<< HEAD
     private var viewModel: NewsListViewModelProtocol
+=======
+    private var viewModel: BusinessViewModelProtocol
+<<<<<<< HEAD:NewsApp/NewsApp/Business/View/BusinessViewController.swift
+>>>>>>> 4f293bfcc9c7db2035cef9467e7d59a236717465
     
+=======
+
+>>>>>>> BusinessViewModel:NewsApp/NewsApp/Business/BusinessViewController.swift
     //MARK: - Life Cycle
     init (viewModel: NewsListViewModelProtocol) {
         self.viewModel = viewModel
@@ -72,11 +80,19 @@ final class BusinessViewController: UIViewController, UICollectionViewDelegate {
         }
         
         viewModel.showError = { error in
+<<<<<<< HEAD:NewsApp/NewsApp/Business/View/BusinessViewController.swift
             print(error)
         }
     }
     
     //MARK: - Private methods
+=======
+            //TODO: Show alert with error
+            print(error)
+        }
+    }
+
+>>>>>>> BusinessViewModel:NewsApp/NewsApp/Business/BusinessViewController.swift
     private func setupUI() {
         view.backgroundColor = .white
         view.addSubview(collectionView)
@@ -122,14 +138,30 @@ extension BusinessViewController: UICollectionViewDataSource {
             return cell ?? UICollectionViewCell()
             
         }
+<<<<<<< HEAD:NewsApp/NewsApp/Business/View/BusinessViewController.swift
+=======
+        
+        let article = viewModel.getArticle(for: indexPath.row)
+        cell.set(article: article)
+        
+        return cell ?? UICollectionViewCell()
+>>>>>>> BusinessViewModel:NewsApp/NewsApp/Business/BusinessViewController.swift
     }
 }
 
 //MARK: - UICollectionViewDelegate
 extension BusinessViewController {
+<<<<<<< HEAD:NewsApp/NewsApp/Business/View/BusinessViewController.swift
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let article = viewModel.sections[indexPath.section].items[indexPath.row] as? ArticleCellViewModel else { return }
         navigationController?.pushViewController(NewsDetailViewController(viewModel: NewsViewModel(article: article)), animated: true)
+=======
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath) {
+        let article = viewModel.getArticle(for: indexPath.row)
+        navigationController?.pushViewController(NewsDetailViewController(viewModel: NewsViewModel(article: article)),
+                                                 animated: true)
+>>>>>>> BusinessViewModel:NewsApp/NewsApp/Business/BusinessViewController.swift
     }
     
     func collectionView(_ collectionView: UICollectionView,
