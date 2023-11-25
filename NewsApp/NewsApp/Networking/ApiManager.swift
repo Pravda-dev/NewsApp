@@ -14,7 +14,7 @@ final class ApiManager {
         case technology = "technology"
     }
     
-    private static let apiKey = "b5f227d594134f2da38106545d2e0455"
+    private static let apiKey = "18743f970bea4105b7b8fc232b617976"
     private static let baseUrl = "https://newsapi.org/v2/"
     private static let path = "top-headlines"
     
